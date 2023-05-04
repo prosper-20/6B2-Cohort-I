@@ -15,8 +15,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     email = models.EmailField(max_length=40, unique=True)
     username = models.CharField(max_length=25)
-    # first_name = models.CharField(max_length=30, blank=True)
-    # last_name = models.CharField(max_length=30, blank=True)
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=30, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
@@ -33,7 +33,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''
         Returns the full name of a user which in our case is the email.
         '''
-        full_name = '%s' % (self.email)
+        full_name = '%s' '%s' % (self.first_name) (self.last_name)
         return full_name.strip()
 
     def get_short_name(self):
